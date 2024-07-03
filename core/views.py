@@ -58,10 +58,8 @@ class BooksView(APIView):
 class TriggerRatingUpdateView(View):
     def get(self, request, *args, **kwargs):
         start_id = kwargs.get('start_id', 100)
-        a=update_books_ratings.delay(start_id)
-        print(200)
-        b=update_books_ratings.delay(200)
-        # print(a)
+        update_books_ratings.delay(start_id)
+        update_books_ratings.delay(200)
         # print(start_id)
         return HttpResponse(f"Start id {start_id}")
 
